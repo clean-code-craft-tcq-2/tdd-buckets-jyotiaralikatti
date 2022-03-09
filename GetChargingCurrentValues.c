@@ -1,9 +1,9 @@
 #include <stdio.h>
 #include "GetChargingCurrentValues.h"
+void SortCurrentValues(int *CurrentValues, int TotalCurrentValues);
 
 int GetChargingCurrentValues (int *CurrentValues, int TotalCurrentValues){
   int TotalPeriodicSetRanges = 0;
-  int i;
   /* Call to sort values in an order */
   SortCurrentValues(CurrentValues,TotalCurrentValues);
 
