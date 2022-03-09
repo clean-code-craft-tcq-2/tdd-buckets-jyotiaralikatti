@@ -10,7 +10,7 @@ int GetChargingCurrentValues (int *CurrentValues, int TotalCurrentValues){
   /* arrage and the ranges */
 	if (  (TotalCurrentValues == 1) || (TotalCurrentValues == 2))
 	{ 
-		TotalPeriodicSetRanges = TotalCurrentValues;
+		TotalPeriodicSetRanges = TotalCurrentValues - 1;
 	}
   return TotalPeriodicSetRanges;
 }
