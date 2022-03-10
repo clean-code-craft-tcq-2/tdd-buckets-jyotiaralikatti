@@ -7,7 +7,7 @@ int GetChargingCurrentValues (int *CurrentValues, int TotalCurrentValues){
   int TotalPeriodicSetRanges = 0;
   int i;
   
-  SortCurrentValues(CurrentValues,TotalCurrentValues);
+ // SortCurrentValues(CurrentValues,TotalCurrentValues);
   
   for(i = 0; i < TotalCurrentValues ; i++)
   {
@@ -17,7 +17,7 @@ int GetChargingCurrentValues (int *CurrentValues, int TotalCurrentValues){
   return TotalPeriodicSetRanges;
 }
 
-void SortCurrentValues(int *CurrentValues, int TotalCurrentValues)
+/*void SortCurrentValues(int *CurrentValues, int TotalCurrentValues)
 {
   int i,swap;
   
@@ -31,7 +31,7 @@ void SortCurrentValues(int *CurrentValues, int TotalCurrentValues)
       i = -1;
     }
   }
-}
+}*/
 
 int GetPeriodicSetRanges(int *CurrentValues, int TotalCurrentValues)
 {
