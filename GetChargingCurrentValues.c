@@ -5,7 +5,7 @@ void SortCurrentValues(int *CurrentValues, int TotalCurrentValues);
 int GetChargingCurrentValues (int *CurrentValues, int TotalCurrentValues){
   int TotalPeriodicSetRanges = 0;
   /* Call to sort values in an order */
-  SortCurrentValues(CurrentValues,TotalCurrentValues);
+  //SortCurrentValues(CurrentValues,TotalCurrentValues);
 
   /* arrage and the ranges */
 	if (  (TotalCurrentValues == 1) || (TotalCurrentValues == 2))
@@ -14,10 +14,10 @@ int GetChargingCurrentValues (int *CurrentValues, int TotalCurrentValues){
 	}
   return TotalPeriodicSetRanges;
 }
-void SortCurrentValues(int *CurrentValues, int TotalCurrentValues)
+/*void SortCurrentValues(int *CurrentValues, int TotalCurrentValues)
 {
 	 int i,temp;
-/* to sort values in an order */
+///* to sort values in an order 
 for(i = 0; i < TotalCurrentValues ; i++)
 {  
 	if(CurrentValues[i] > CurrentValues[i+1])
@@ -30,3 +30,4 @@ for(i = 0; i < TotalCurrentValues ; i++)
 }
 
 }
+*/
