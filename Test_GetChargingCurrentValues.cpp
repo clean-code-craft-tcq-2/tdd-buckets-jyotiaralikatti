@@ -11,3 +11,8 @@ TEST_CASE("Checks the charging current if there are same ranges and get the numb
   int CurrentValues[] = {4,4};
   REQUIRE(GetChargingCurrentValues(CurrentValues,2) == 1);
 }
+
+TEST_CASE("Checks the periodicity of charging current ranges and get the no of occurences") {
+  int CurrentValues[] = {4,5,6};
+  REQUIRE(GetChargingCurrentValues(CurrentValues,3) == 1);
+}
