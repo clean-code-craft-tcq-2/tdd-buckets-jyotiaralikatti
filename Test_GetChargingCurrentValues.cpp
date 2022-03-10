@@ -18,6 +18,6 @@ TEST_CASE("Checks the periodicity of charging current ranges and get the no of o
 }
 
 TEST_CASE("Checks the periodicity of charging current ranges and get the no of occurences for non sequential inputs") {
-  int CurrentValues[] = {4,5,8,9};
-  REQUIRE(GetChargingCurrentValues(CurrentValues,4) == 2);
+  int CurrentValues[] = {9,5,4,9,5};
+  REQUIRE(GetChargingCurrentValues(CurrentValues,5) == 2);
 }
