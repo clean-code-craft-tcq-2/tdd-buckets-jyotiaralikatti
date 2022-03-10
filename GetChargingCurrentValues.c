@@ -1,33 +1,55 @@
 #include <stdio.h>
 #include "GetChargingCurrentValues.h"
+int GetPeriodicSetRanges(int *CurrentValues, int TotalCurrentValues);
 void SortCurrentValues(int *CurrentValues, int TotalCurrentValues);
 
 int GetChargingCurrentValues (int *CurrentValues, int TotalCurrentValues){
   int TotalPeriodicSetRanges = 0;
-  /* Call to sort values in an order */
-  //SortCurrentValues(CurrentValues,TotalCurrentValues);
-
-  /* arrage and the ranges */
-	if (  (TotalCurrentValues == 1) || (TotalCurrentValues == 2))
-	{ 
-		TotalPeriodicSetRanges = TotalCurrentValues - 1;
-	}
+  int i;
+  
+  SortCurrentValues(CurrentValues,TotalCurrentValues);
+  
+  for(i = 0; i < TotalCurrentValues ; i++)
+  {
+   TotalPeriodicSetRanges = GetPeriodicSetRanges(CurrentValues,TotalCurrentValues);
+  }
+  
   return TotalPeriodicSetRanges;
 }
-/*void SortCurrentValues(int *CurrentValues, int TotalCurrentValues)
+
+void SortCurrentValues(int *CurrentValues, int TotalCurrentValues)
 {
-	 int i,temp;
-///* to sort values in an order 
-for(i = 0; i < TotalCurrentValues ; i++)
-{  
-	if(CurrentValues[i] > CurrentValues[i+1])
-		{
-		temp = CurrentValues[i];
-		CurrentValues[i] = CurrentValues[i+1];
-		CurrentValues[i+1] = temp;
-		i= -1;	  
-		}
+  int i,swap;
+  
+  for(i = 0; i <(TotalCurrentValues - 1); i++)
+  {
+    if(CurrentValues[i] > CurrentValues[i+1])
+    {
+      swap = CurrentValues[i];
+      CurrentValues[i] = CurrentValues[i+1];
+      CurrentValues[i+1] = swap;
+      i = -1;
+    }
+  }
 }
 
+int GetPeriodicSetRanges(int *CurrentValues, int TotalCurrentValues)
+{
+  int lowerRange,NextElement,RangeDifference;
+  int TotalPeriodicSetRanges = 0;
+ 
+    lowerRange = CurrentValues[0];
+    NextElement = CurrentValues[1];
+    RangeDifference = NextElement - lowerRange;
+    if(RangeDifference == 0 || RangeDifference == 1)
+    {
+      TotalPeriodicSetRanges++;
+      printf("Range, Readings\n");
+      printf("%d-%d, %d",lowerRange,NextElement,TotalCurrentValues);
+    }
+  
+  return TotalPeriodicSetRanges;
 }
-*/
+
+
+
