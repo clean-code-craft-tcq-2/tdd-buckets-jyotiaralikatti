@@ -1,26 +1,20 @@
 #include <stdio.h>
 #include "GetChargingCurrentValues.h"
-int GetPeriodicSetRanges(int *CurrentValues, int TotalCurrentValues);
-void SortCurrentValues(int *CurrentValues, int TotalCurrentValues);
-
+Range_Cfg range;
 int GetChargingCurrentValues (int *CurrentValues, int TotalCurrentValues){
   int TotalPeriodicSetRanges = 0;
   int i;
-  
   SortCurrentValues(CurrentValues,TotalCurrentValues);
-  
   for(i = 0; i < TotalCurrentValues ; i++)
   {
-   TotalPeriodicSetRanges = GetPeriodicSetRanges(CurrentValues,TotalCurrentValues);
+   range = GetPeriodicSetRanges(CurrentValues,TotalCurrentValues);
   }
-  
+    printf("%d-%d, %d",range.lowerRange,range.upperRange,range.NumberOfPeriodicRanges);
   return TotalPeriodicSetRanges;
 }
-
 void SortCurrentValues(int *CurrentValues, int TotalCurrentValues)
 {
   int i,swap;
-  
   for(i = 0; i <(TotalCurrentValues - 1); i++)
   {
     if(CurrentValues[i] > CurrentValues[i+1])
@@ -30,26 +24,27 @@ void SortCurrentValues(int *CurrentValues, int TotalCurrentValues)
       CurrentValues[i+1] = swap;
       i = -1;
     }
-  }
+  }  
+  printf("Sorted elements\n");
+  for(i = 0; i <(TotalCurrentValues ); i++)
+  printf("%d\t",CurrentValues[i]);
 }
-
-int GetPeriodicSetRanges(int *CurrentValues, int TotalCurrentValues)
+Range_Cfg GetPeriodicSetRanges(int *CurrentValues, int TotalCurrentValues)
 {
-  int lowerRange,NextElement,RangeDifference;
-  int TotalPeriodicSetRanges = 0;
- 
-    lowerRange = CurrentValues[0];
-    NextElement = CurrentValues[1];
-    RangeDifference = NextElement - lowerRange;
-    if(RangeDifference == 0 || RangeDifference == 1)
-    {
-      TotalPeriodicSetRanges++;
-      printf("Range, Readings\n");
-      printf("%d-%d, %d",lowerRange,NextElement,TotalCurrentValues);
+  int CurrentElement,NextElement,RangeDifference;
+  int i,TotalPeriodicSetRanges = 0;
+    for (i=1;i<=TotalCurrentValues;i++){
+        CurrentElement = CurrentValues[i-1];
+        NextElement = CurrentValues[i];
+        RangeDifference = NextElement - CurrentElement;        
+        if( (RangeDifference == 1)){
+          TotalPeriodicSetRanges++;
+          range.lowerRange = CurrentElement;
+        }
+        else {
+          range.upperRange = NextElement;
+        }
     }
-  
-  return TotalPeriodicSetRanges;
+	range. NumberOfPeriodicRanges = TotalPeriodicSetRanges;
+  return range;
 }
-
-
-
