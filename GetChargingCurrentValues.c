@@ -2,6 +2,7 @@
 #include<assert.h>
 #include "GetChargingCurrentValues.h"
 Range_Cfg range;
+int TotalPeriodicSetRanges;
 int GetChargingCurrentValues (int *CurrentValues, int TotalCurrentValues){
   int i;
   SortCurrentValues(CurrentValues,TotalCurrentValues);
@@ -23,7 +24,7 @@ void SortCurrentValues(int *CurrentValues, int TotalCurrentValues)
 }
 int GetNumberOfPeriodicRanges( int RangeDifference)
 {
-    int TotalPeriodicSetRanges = 0;
+
     if( (RangeDifference == 1)){
         TotalPeriodicSetRanges++;
     }
@@ -43,6 +44,6 @@ Range_Cfg GetPeriodicSetRanges(int *CurrentValues, int TotalCurrentValues)
     
     if((RangeDifference == 0)&&(TotalCurrentValues == 2))
         range. NumberOfPeriodicRanges = 1; 
-    }	
+    }
   return range;
 }
