@@ -1,33 +1,26 @@
 #include <stdio.h>
+#include<assert.h>
 #include "GetChargingCurrentValues.h"
 Range_Cfg range;
 int GetChargingCurrentValues (int *CurrentValues, int TotalCurrentValues){
-  int TotalPeriodicSetRanges = 0;
   int i;
   SortCurrentValues(CurrentValues,TotalCurrentValues);
-  for(i = 0; i < TotalCurrentValues ; i++)
-  {
+  for(i = 0; i < TotalCurrentValues ; i++){
    range = GetPeriodicSetRanges(CurrentValues,TotalCurrentValues);
   }
-   // printf("%d-%d, %d",range.lowerRange,range.upperRange,range.NumberOfPeriodicRanges);
-  return TotalPeriodicSetRanges;
+  return range.NumberOfPeriodicRanges;
 }
 void SortCurrentValues(int *CurrentValues, int TotalCurrentValues)
 {
   int i,swap;
-  for(i = 0; i <(TotalCurrentValues - 1); i++)
-  {
-    if(CurrentValues[i] > CurrentValues[i+1])
-    {
+  for(i = 0; i <(TotalCurrentValues - 1); i++){
+    if(CurrentValues[i] > CurrentValues[i+1]){
       swap = CurrentValues[i];
       CurrentValues[i] = CurrentValues[i+1];
       CurrentValues[i+1] = swap;
       i = -1;
     }
   }  
-  printf("Sorted elements\n");
- /* for(i = 0; i <(TotalCurrentValues ); i++)
-  printf("%d\t",CurrentValues[i]);*/
 }
 Range_Cfg GetPeriodicSetRanges(int *CurrentValues, int TotalCurrentValues)
 {
