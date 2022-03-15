@@ -21,21 +21,28 @@ void SortCurrentValues(int *CurrentValues, int TotalCurrentValues)
     }
   }  
 }
+int GetNumberOfPeriodicRanges( int RangeDifference)
+{
+    int TotalPeriodicSetRanges = 0;
+    if( (RangeDifference == 1)){
+        TotalPeriodicSetRanges++;
+    }
+  
+    return TotalPeriodicSetRanges;
+}
 Range_Cfg GetPeriodicSetRanges(int *CurrentValues, int TotalCurrentValues)
 {
-  int CurrentElement,NextElement,RangeDifference;
-  int i,TotalPeriodicSetRanges = 0;
+  int i;
     for (i=1;i<TotalCurrentValues;i++){
-        CurrentElement = CurrentValues[i-1];
-        NextElement = CurrentValues[i];
-        RangeDifference = NextElement - CurrentElement;        
-        if( (RangeDifference == 1)){
-          TotalPeriodicSetRanges++;
-          range.lowerRange = CurrentElement;
-        }
-        if((RangeDifference == 0)&&(TotalCurrentValues == 2))
-        TotalPeriodicSetRanges=1;
-    }
-	range. NumberOfPeriodicRanges = TotalPeriodicSetRanges;
+    int CurrentElement,NextElement,RangeDifference;
+
+    CurrentElement = CurrentValues[i-1];
+    NextElement = CurrentValues[i];
+    RangeDifference = NextElement - CurrentElement; 
+    range. NumberOfPeriodicRanges = GetNumberOfPeriodicRanges(RangeDifference);
+    
+    if((RangeDifference == 0)&&(TotalCurrentValues == 2))
+        range. NumberOfPeriodicRanges = 1; 
+    }	
   return range;
 }
