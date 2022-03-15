@@ -9,7 +9,7 @@ int GetChargingCurrentValues (int *CurrentValues, int TotalCurrentValues){
   {
    range = GetPeriodicSetRanges(CurrentValues,TotalCurrentValues);
   }
-    printf("%d-%d, %d",range.lowerRange,range.upperRange,range.NumberOfPeriodicRanges);
+   // printf("%d-%d, %d",range.lowerRange,range.upperRange,range.NumberOfPeriodicRanges);
   return TotalPeriodicSetRanges;
 }
 void SortCurrentValues(int *CurrentValues, int TotalCurrentValues)
@@ -26,8 +26,8 @@ void SortCurrentValues(int *CurrentValues, int TotalCurrentValues)
     }
   }  
   printf("Sorted elements\n");
-  for(i = 0; i <(TotalCurrentValues ); i++)
-  printf("%d\t",CurrentValues[i]);
+ /* for(i = 0; i <(TotalCurrentValues ); i++)
+  printf("%d\t",CurrentValues[i]);*/
 }
 Range_Cfg GetPeriodicSetRanges(int *CurrentValues, int TotalCurrentValues)
 {
