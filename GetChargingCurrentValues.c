@@ -5,9 +5,8 @@ Range_Cfg range;
 int GetChargingCurrentValues (int *CurrentValues, int TotalCurrentValues){
   int i;
   SortCurrentValues(CurrentValues,TotalCurrentValues);
-  for(i = 0; i < TotalCurrentValues ; i++){
+
    range = GetPeriodicSetRanges(CurrentValues,TotalCurrentValues);
-  }
   return range.NumberOfPeriodicRanges;
 }
 void SortCurrentValues(int *CurrentValues, int TotalCurrentValues)
@@ -26,7 +25,7 @@ Range_Cfg GetPeriodicSetRanges(int *CurrentValues, int TotalCurrentValues)
 {
   int CurrentElement,NextElement,RangeDifference;
   int i,TotalPeriodicSetRanges = 0;
-    for (i=1;i<=TotalCurrentValues;i++){
+    for (i=1;i<TotalCurrentValues;i++){
         CurrentElement = CurrentValues[i-1];
         NextElement = CurrentValues[i];
         RangeDifference = NextElement - CurrentElement;        
@@ -34,9 +33,8 @@ Range_Cfg GetPeriodicSetRanges(int *CurrentValues, int TotalCurrentValues)
           TotalPeriodicSetRanges++;
           range.lowerRange = CurrentElement;
         }
-        else {
-          range.upperRange = NextElement;
-        }
+        if((RangeDifference == 0)&&(TotalCurrentValues == 2))
+        TotalPeriodicSetRanges=1;
     }
 	range. NumberOfPeriodicRanges = TotalPeriodicSetRanges;
   return range;
