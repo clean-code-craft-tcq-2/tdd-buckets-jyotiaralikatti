@@ -39,3 +39,15 @@ TEST_CASE("Case3 : For inputs in Unsorted order and duplicates") {
   actual_result3 = GetPeriodicSetRanges(input_range3, no_of_elements, Index, readingRange3);
   REQUIRE(strcmp(actual_result3, expected_range3) == 0);
 }
+
+TEST_CASE("Case4 : For inputs in Unsorted order, duplicates, negative value and single value in a range") {
+     int input_range3[]= {-5,3, 5, 4, 8, 3, 7, 10, 9, 7};
+  const char *expected_range3 = "-5--5,1\n3-5,4\n7-10,5";
+  char readingRange3[MAX_STRING_LEN]={0};
+  
+  int no_of_elements = sizeof(input_range3)/sizeof(input_range3[0]);
+  char *actual_result3;
+
+  actual_result3 = GetPeriodicSetRanges(input_range3, no_of_elements, Index, readingRange3);
+  REQUIRE(strcmp(actual_result3, expected_range3) == 0);
+}
