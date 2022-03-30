@@ -24,6 +24,6 @@ TEST_CASE("Case2 : For inputs in Unsorted order") {
   int no_of_elements = sizeof(input_range2)/sizeof(input_range2[0]);
   char *actual_result2;
 
-  actual_result = GetPeriodicSetRanges(input_range2, no_of_elements, Index, readingRange2);
-  REQUIRE(strcmp(actual_result, expected_range2) == 0);
+  actual_result2 = GetPeriodicSetRanges(input_range2, no_of_elements, Index, readingRange2);
+  REQUIRE(strcmp(actual_result2, expected_range2) == 0);
 }
