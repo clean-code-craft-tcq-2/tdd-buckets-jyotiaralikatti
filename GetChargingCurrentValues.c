@@ -4,7 +4,6 @@
 #include <string.h>
 #include "GetChargingCurrentValues.h"
 
-char* GetPeriodicSetRanges (int *CurrentValues, int TotalCurrentValues, int Index, char *result);
 char output_string[20] = "\0";
 int Index = 0;
 
