@@ -10,6 +10,7 @@ int Index = 0;
 char* GetPeriodicSetRanges (int *CurrentValues, int TotalCurrentValues, int Index, char *result)
 {
 	int i;
+	qsort(CurrentValues, TotalCurrentValues, sizeof(int), cmpfunc);
 	
 	for (i = 0; i < (TotalCurrentValues - 1); i++)
 	{
@@ -25,3 +26,8 @@ char* GetPeriodicSetRanges (int *CurrentValues, int TotalCurrentValues, int Inde
 	strcat(result, output_string);
 	return result;
 }
+
+int cmpfunc (const void * a, const void * b) {
+   return ( *(int*)a - *(int*)b );
+}
+
