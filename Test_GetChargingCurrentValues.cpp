@@ -62,7 +62,7 @@ TEST_CASE("Case5 : For Analog 12bit current values: convert to digital, Sort and
   char *actual_result5;
   
   ConvertAnalogCurrentInputs2Digital(input_range5, no_of_elements, DigitalCurrentValues5 );
-  actual_result5 = GetPeriodicSetRanges(input_range5, no_of_elements, Index, readingRange5);
+  actual_result5 = GetPeriodicSetRanges(DigitalCurrentValues5, no_of_elements, Index, readingRange5);
           
   REQUIRE(strcmp(actual_result5, expected_range5) == 0);
 }
