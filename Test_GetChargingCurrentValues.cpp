@@ -53,7 +53,7 @@ TEST_CASE("Case4 : For inputs in Unsorted order, duplicates, negative value and 
 }
 
 /* For Analog inputs consider "0" for invalid values and covert upto 12bit resolution, Max_current = 10amps*/
-TEST_CASE("Case5 : For Analog 12bit current values: convert to digital, Sort and print ranges ) {
+TEST_CASE("Case5 : For Analog 12bit current values: convert to digital, Sort and print ranges" ) {
   int input_range[]= {4095,4094};
   const char *expected_range = "0-0,1\n10-10,1";
   char readingRange4[MAX_STRING_LEN]={0};
