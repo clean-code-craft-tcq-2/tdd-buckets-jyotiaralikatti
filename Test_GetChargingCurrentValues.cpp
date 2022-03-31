@@ -51,3 +51,18 @@ TEST_CASE("Case4 : For inputs in Unsorted order, duplicates, negative value and 
   actual_result4 = GetPeriodicSetRanges(input_range4, no_of_elements, Index, readingRange4);
   REQUIRE(strcmp(actual_result4, expected_range4) == 0);
 }
+
+/* For Analog inputs consider "0" for invalid values and covert upto 12bit resolution, Max_current = 10amps*/
+TEST_CASE("Case5 : For Analog 12bit current values: convert to digital, Sort and print ranges ) {
+  int input_range[]= {4095,4094};
+  const char *expected_range = "0-0,1\n10-10,1";
+  char readingRange4[MAX_STRING_LEN]={0};
+  
+  int no_of_elements = sizeof(input_range4)/sizeof(input_range4[0]);
+  char *actual_result4;
+  
+  ConvertAnalogCurrentInputs2Digital(input_range, no_of_elements, DigitalCurrentValues );
+  actual_result4 = GetPeriodicSetRanges(input_range4, no_of_elements, Index, readingRange4);
+          
+  REQUIRE(strcmp(actual_result4, expected_range4) == 0);
+}
